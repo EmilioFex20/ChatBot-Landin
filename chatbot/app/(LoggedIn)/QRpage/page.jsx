@@ -145,7 +145,7 @@ export default function Home() {
           </ul>
           <button
             onClick={enviarExclusiones}
-            className="mt-4 p-2 bg-blue-600 text-white rounded"
+            className="mt-4 p-2 bg-violet-800 text-white rounded"
           >
             Excluir seleccionados
           </button>
@@ -162,7 +162,7 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="bg-blue-600 text-white p-2 rounded"
+              className="bg-violet-800 text-white p-2 rounded"
             >
               Excluir contacto
             </button>
