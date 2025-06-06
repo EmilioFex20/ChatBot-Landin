@@ -58,6 +58,7 @@ export default function Home() {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/qr`);
         const data = await response.json();
         if (data.status === "ok") {
+          console.log("QR recibido:", data.qr);
           setQr(data.qr);
         } else {
           setQr(null);
