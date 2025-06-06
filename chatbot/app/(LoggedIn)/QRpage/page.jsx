@@ -83,7 +83,12 @@ export default function Home() {
     const fetchGroups = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/grupos`
+          `${process.env.NEXT_PUBLIC_API_URL}/grupos`,
+          {
+            headers: {
+              "ngrok-skip-browser-warning": "true",
+            },
+          }
         );
         const data = await response.json();
         if (data.error === "WhatsApp no está conectado aún") {
