@@ -1,7 +1,7 @@
 "use client";
 import { QRCodeSVG } from "qrcode.react";
 import { useEffect, useState } from "react";
-
+//comentario para forzar build
 export default function Home() {
   const [qr, setQr] = useState(null);
 
