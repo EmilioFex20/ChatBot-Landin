@@ -23,6 +23,7 @@ export default function Home() {
         {
           method: "POST",
           headers: {
+            "ngrok-skip-browser-warning": "true",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ grupos: seleccionados }),
@@ -43,6 +44,7 @@ export default function Home() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": "true",
       },
       body: JSON.stringify({ numero: contact + "@s.whatsapp.net" }),
     });
@@ -55,7 +57,12 @@ export default function Home() {
   useEffect(() => {
     const fetchQR = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/qr`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/qr`, {
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+          },
+        });
+
         const data = await response.json();
         if (data.status === "ok") {
           console.log("QR recibido:", data.qr);
@@ -91,26 +98,6 @@ export default function Home() {
     };
     fetchGroups();
   }, []);
-
-  /*  useEffect(() => {
-    const fetchContacts = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/contactos`
-        );
-        const data = await response.json();
-        if (data.error === "WhatsApp no está conectado aún") {
-          setContacts([]);
-        } else {
-          setContacts(data);
-        }
-      } catch (error) {
-        console.error("Error al obtener los grupos:", error);
-        setContacts([]);
-      }
-    };
-    fetchContacts();
-  }, []); */
 
   return (
     <div className="flex flex-col w-full items-center justify-center mt-10">
